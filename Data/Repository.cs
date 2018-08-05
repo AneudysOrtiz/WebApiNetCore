@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using System.Linq.Expressions;
 
 namespace MyAPI.Data
@@ -12,27 +13,27 @@ namespace MyAPI.Data
         }
         public void Add(T entity)
         {
-            throw new System.NotImplementedException();
+            _db.Set<T>().Add(entity);
         }
 
         public IEnumerable<T> Find(Expression<System.Func<T, bool>> predicate)
         {
-            throw new System.NotImplementedException();
+            return _db.Set<T>().Where(predicate);
         }
 
         public IEnumerable<T> GetAll()
         {
-            throw new System.NotImplementedException();
+            return _db.Set<T>().ToList();
         }
 
         public T GetById(int id)
         {
-            throw new System.NotImplementedException();
+            return _db.Set<T>().Find(id);
         }
 
         public void Remove(T entity)
         {
-            throw new System.NotImplementedException();
+            _db.Set<T>().Remove(entity);
         }
     }
 }
